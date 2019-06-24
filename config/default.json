@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://knight:yelppass@yelpcamp-pszhu.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "This is a secreat",
+  "githubClientId": "b1c1ca51434915b353ab",
+  "githubSecret": "0118ddfd97ee9a16fe2c3711af8eb2f5ac7be0b6"
+}

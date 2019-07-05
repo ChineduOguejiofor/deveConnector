@@ -4,9 +4,12 @@ const request = require('request');
 const config = require('config');
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator/check');
+const cors = require('cors');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+
+router.use(cors());
 
 // @route GET api/profile/me
 // @ desc GET current user profile

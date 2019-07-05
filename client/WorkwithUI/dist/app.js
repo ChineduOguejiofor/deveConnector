@@ -1,24 +1,6 @@
-// const profile = new Profile();
-
-// profile
-//   .getprofile()
-//   .then(results => {
-//     console.log(results);
-//   })
-//   .catch();
-
-console.log('I am working');
-listmes();
-
-function listmes() {
-  fetch('http://localhost:5000/api/profile/')
-    .then(response => response.json())
-    .then(mews => {
-      console.log(mews);
-    });
-}
-
 const form = document.querySelector('form');
+
+const API_URL = 'http://localhost:5000/api/auth';
 
 form.addEventListener('submit', event => {
   event.preventDefault();
@@ -27,12 +9,22 @@ form.addEventListener('submit', event => {
   const email = formData.get('email');
   const password = formData.get('password');
 
-  const both = {
+  const credentials = {
     email,
     password
   };
 
-  console.log(both);
+  console.log(credentials);
 
-  console.log('I was clicked');
+  fetch(API_URL, {
+    method: 'POST',
+    body: JSON.stringify(credentials),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(token => {
+      console.log(token);
+    });
 });

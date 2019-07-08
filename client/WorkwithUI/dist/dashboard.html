@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="js/auth.js"></script>
     <link
       rel="shortcut icon"
       href="https://img.icons8.com/office/16/000000/falcon.png"
@@ -15,7 +16,7 @@
       href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../../dist/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Devconnector</title>
   </head>
   <body>
@@ -33,7 +34,7 @@
           >
         </li>
         <li>
-          <a href="login.html ">
+          <a href="login.html " id="logout" onclick="logout(event)">
             <i class="fas fa-sign-out-alt"></i>
             <span class="hide-sm"> Logout</span></a
           >
@@ -45,7 +46,9 @@
       <h1 class="large text-primary">
         Dashboard
       </h1>
-      <p class="lead"><i class="fas fa-user"> </i> Welcome John Doe</p>
+      <p class="lead">
+        <i class="fas fa-user"> </i> Welcome <span id="userName">John Doe</span>
+      </p>
       <div class="dash-button">
         <a href="create-profile.html" class="btn">
           <i class="fas fa-user-circle text-primary"></i> Edit Profile
@@ -68,20 +71,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Microsoft</td>
-            <td class="hide-sm">Senior Developer</td>
-            <td class="hide-sm">Oct 2011 - Current</td>
-            <td><button class="btn btn-danger">Delete</button></td>
-          </tr>
-          <tr>
-            <td>Sun Microsystems</td>
-            <td class="hide-sm">Senior Developer</td>
-            <td class="hide-sm">Oct 2011 - Current</td>
-            <td><button class="btn btn-danger">Delete</button></td>
-          </tr>
-        </tbody>
+        <tbody id="expBody"></tbody>
       </table>
       <h2 class="my-2">Education Credentials</h2>
       <table class="table">
@@ -93,20 +83,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>University of Washinton</td>
-            <td class="hide-sm">Senior Developer</td>
-            <td class="hide-sm">Oct 2011 - Current</td>
-            <td><button class="btn btn-danger">Delete</button></td>
-          </tr>
-          <tr>
-            <td>Sun Microsystems</td>
-            <td class="hide-sm">Senior Developer</td>
-            <td class="hide-sm">Oct 2011 - Current</td>
-            <td><button class="btn btn-danger">Delete</button></td>
-          </tr>
-        </tbody>
+        <tbody id="eduBody"></tbody>
       </table>
 
       <div class="my-2">
@@ -115,5 +92,7 @@
         </button>
       </div>
     </section>
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
   </body>
 </html>

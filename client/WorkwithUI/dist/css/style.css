@@ -580,12 +580,24 @@ img {
 }
 
 .show {
-  visibility: visible;
+  display: inherit;
 }
 
 .hide {
   visibility: hidden;
   display: none;
+}
+
+#spinner {
+  width: 250px;
+  height: 250px;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.checkbox {
+  display: inherit;
+  display: inline;
 }
 
 @media (max-width: 700px) {
@@ -648,4 +660,3 @@ img {
     padding: 0.3rem 0.4rem;
   }
 }
-/*# sourceMappingURL=style.css.map */

@@ -15,7 +15,7 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <title>Welcome To The Developer Connector</title>
   </head>
   <body>
@@ -42,32 +42,22 @@
     </nav>
     <section class="container">
       <h1 class="large text-primary">
-        Add Your Education
+        Add An Experience
       </h1>
       <p class="lead">
-        <i class="fas fa-graduation-cap"></i> Add any school, bootcamp, etc that
-        you have attended
+        <i class="fas fa-code-branch"></i> Add any developer/programming
+        positions that you have had in the past
       </p>
       <small>* = required field</small>
-      <form class="form">
+      <form class="form" onsubmit="addExperience(event)">
         <div class="form-group">
-          <input
-            type="text"
-            placeholder="* School or Bootcamp"
-            name="school"
-            required
-          />
+          <input type="text" placeholder="* Job Title" name="title" required />
         </div>
         <div class="form-group">
-          <input
-            type="text"
-            placeholder="* Degree or Certificate"
-            name="degree"
-            required
-          />
+          <input type="text" placeholder="* Company" name="company" required />
         </div>
         <div class="form-group">
-          <input type="text" placeholder="Field Of Study" name="fieldofstudy" />
+          <input type="text" placeholder="Location" name="location" />
         </div>
         <div class="form-group">
           <h4>From Date</h4>
@@ -78,16 +68,14 @@
           <input type="date" name="to" />
         </div>
         <div class="form-group">
-          <p>
-            <input type="checkbox" name="current" value="" /> Current School
-          </p>
+          <p><input type="checkbox" name="current" value="" /> Current Job</p>
         </div>
         <div class="form-group">
           <textarea
             name="description"
             cols="30"
             rows="5"
-            placeholder="Program Description"
+            placeholder="Job Description"
           ></textarea>
         </div>
         <button class="btn btn-primary my-1">Submit</button>
@@ -95,5 +83,6 @@
         <a class="btn my-1" href="dashboard.html">Go Back</a>
       </form>
     </section>
+    <script src="../js/addexp.js"></script>
   </body>
 </html>

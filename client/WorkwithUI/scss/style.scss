@@ -176,10 +176,20 @@ img {
 }
 
 .show {
-  visibility: visible;
+  display: inherit;
 }
 .hide {
   visibility: hidden;
   display: none;
+}
+
+#spinner {
+  width: 250px;
+  height: 250px;
+  align-content: center;
+}
+.checkbox {
+  display: inherit;
+  display: inline;
 }
 @import 'mobile';

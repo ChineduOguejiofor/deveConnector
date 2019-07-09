@@ -1,2 +1,4 @@
-1) Work on links
-2) Work on index don't show if logged in
+1) Work on links DONE
+2) Work on index don't show if logged in DONE
+3) Displaying the correct error and successes
+4) Updated profile

@@ -1,11 +1,10 @@
-const cantseeifloggedin = ['login.html', 'register.html'];
-const redirecttoDashboard = cantseeifloggedin.some(element =>
+const guestLinks = ['index.html', 'login.html', 'register.html'];
+const pageIsGuestLink = guestLinks.some(element =>
   location.href.endsWith(element)
 );
-// window.location.href.indexOf("franky") > -1
-// location.href.endsWith('login.html')
-if (!(location.href.indexOf('login') > -1) && !localStorage.token) {
-  location.href = 'login.html';
-} else if (localStorage.token && redirecttoDashboard) {
+
+if (localStorage.token && pageIsGuestLink) {
   location.href = 'dashboard.html';
+} else if (!localStorage.token && !pageIsGuestLink) {
+  location.href = 'login.html';
 }

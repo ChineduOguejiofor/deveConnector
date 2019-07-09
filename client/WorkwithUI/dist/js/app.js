@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'http://localhost:3000/api';
 
 function loginUser(event) {
   event.preventDefault();
@@ -22,7 +22,8 @@ function loginUser(event) {
     if (statusCode === 400) {
       console.log(data);
     } else if (statusCode === 200) {
-      localStorage.token = data.token;
+      localStorage.setItem('token', data.token);
+      // localStorage.token = data.token;
       location.href = 'dashboard.html';
       console.log(data);
     }
@@ -38,13 +39,16 @@ function callFetchAPI(
     console.log(err);
   }
 ) {
+  const myHeaders = new Headers();
+  const tokenValue = localStorage.getItem('token');
+
+  myHeaders.append('x-auth-token', tokenValue);
+  myHeaders.append('Content-Type', 'application/json');
+
   fetch(BASE_URL + route, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,
-    headers: {
-      'content-type': 'application/json',
-      Authorization: localStorage.token
-    }
+    headers: myHeaders
   })
     .then(async response => {
       if (response.status == 401) {

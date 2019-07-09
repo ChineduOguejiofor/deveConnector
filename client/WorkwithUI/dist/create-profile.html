@@ -9,6 +9,7 @@
       rel="shortcut icon"
       href="https://img.icons8.com/office/16/000000/falcon.png"
     />
+    <script src="js/auth.js"></script>
     <script src="https://kit.fontawesome.com/09db83d1b4.js"></script>
 
     <link
@@ -108,39 +109,45 @@
         </div>
 
         <div class="my-2">
-          <button type="button" class="btn btn-light">
+          <button
+            type="button"
+            onclick="socialFunction(event)"
+            class="btn btn-light"
+          >
             Add Social Network Links
           </button>
           <span>Optional</span>
         </div>
+        <div id="socialInputs" class="hide">
+          <div class="form-group social-input">
+            <i class="fab fa-twitter fa-2x"></i>
+            <input type="text" placeholder="Twitter URL" name="twitter" />
+          </div>
 
-        <div class="form-group social-input">
-          <i class="fab fa-twitter fa-2x"></i>
-          <input type="text" placeholder="Twitter URL" name="twitter" />
-        </div>
+          <div class="form-group social-input">
+            <i class="fab fa-facebook fa-2x"></i>
+            <input type="text" placeholder="Facebook URL" name="facebook" />
+          </div>
 
-        <div class="form-group social-input">
-          <i class="fab fa-facebook fa-2x"></i>
-          <input type="text" placeholder="Facebook URL" name="facebook" />
-        </div>
+          <div class="form-group social-input">
+            <i class="fab fa-youtube fa-2x"></i>
+            <input type="text" placeholder="YouTube URL" name="youtube" />
+          </div>
 
-        <div class="form-group social-input">
-          <i class="fab fa-youtube fa-2x"></i>
-          <input type="text" placeholder="YouTube URL" name="youtube" />
-        </div>
+          <div class="form-group social-input">
+            <i class="fab fa-linkedin fa-2x"></i>
+            <input type="text" placeholder="Linkedin URL" name="linkedin" />
+          </div>
 
-        <div class="form-group social-input">
-          <i class="fab fa-linkedin fa-2x"></i>
-          <input type="text" placeholder="Linkedin URL" name="linkedin" />
-        </div>
-
-        <div class="form-group social-input">
-          <i class="fab fa-instagram fa-2x"></i>
-          <input type="text" placeholder="Instagram URL" name="instagram" />
+          <div class="form-group social-input">
+            <i class="fab fa-instagram fa-2x"></i>
+            <input type="text" placeholder="Instagram URL" name="instagram" />
+          </div>
         </div>
         <button class="btn btn-primary my-1">Submit</button>
         <a class="btn btn-light my-1" href="dashboard.html">Go Back</a>
       </form>
     </section>
+    <script src="js/createProfile.js"></script>
   </body>
 </html>

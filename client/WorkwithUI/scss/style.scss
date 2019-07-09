@@ -174,4 +174,12 @@ img {
     width: 150px;
   }
 }
+
+.show {
+  visibility: visible;
+}
+.hide {
+  visibility: hidden;
+  display: none;
+}
 @import 'mobile';

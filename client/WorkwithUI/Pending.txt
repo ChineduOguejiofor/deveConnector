@@ -4,3 +4,6 @@
 3b) showing the success in a different page
 4) Updated profile not working when blank
 5) Format dates properly To and From
+6)Social links still pending
+7)Nav for indivial profile
+8)Finishing touches on how pages load

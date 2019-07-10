@@ -50,8 +50,8 @@ callFetchAPI('/profile', 'GET', null, ({ statusCode, data }) => {
 });
 
 function viewProfile(id) {
-  // alert('you clicked me');
-  console.log(id);
+  localStorage.setItem('clickedUser', id);
+  // console.log(id);
 
   location.href = 'profile.html';
 }

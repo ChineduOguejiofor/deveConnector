@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="../js/auth.js"></script>
+
     <link
       href="https://fonts.googleapis.com/css?family=Raleway"
       rel="stylesheet"
@@ -33,7 +35,7 @@
           >
         </li>
         <li>
-          <a href="login.html" title="Logout">
+          <a href="login.html" title="Logout" onclick="logout()">
             <i class="fas fa-sign-out-alt"></i>
             <span class="hide-sm">Logout</span></a
           >
@@ -42,7 +44,7 @@
     </nav>
     <section class="container">
       <a href="posts.html" class="btn">Back To Posts</a>
-      <div class="post bg-white p-1 my-1">
+      <div class="post bg-white p-1 my-1" id="currentComment">
         <div>
           <a href="profile.html">
             <img
@@ -122,5 +124,7 @@
         </div>
       </div>
     </section>
+    <script src="../js/app.js"></script>
+    <script src="../js/post.js"></script>
   </body>
 </html>

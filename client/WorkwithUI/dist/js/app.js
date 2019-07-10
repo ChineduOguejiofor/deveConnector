@@ -1,35 +1,5 @@
 const BASE_URL = 'http://localhost:3000/api';
 
-function loginUser(event) {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-
-  const email = formData.get('email');
-  const password = formData.get('password');
-  // const { email, password } = formData.getAll();
-
-  // console.log(email, password);
-
-  // debugger;
-  const credentials = {
-    email,
-    password
-  };
-
-  console.log(credentials);
-
-  callFetchAPI('/auth', 'POST', credentials, ({ data, statusCode }) => {
-    if (statusCode === 400) {
-      console.log(data);
-    } else if (statusCode === 200) {
-      localStorage.setItem('token', data.token);
-      // localStorage.token = data.token;
-      location.href = 'dashboard.html';
-      console.log(data);
-    }
-  });
-}
-
 function callFetchAPI(
   route,
   method,
@@ -62,4 +32,12 @@ function callFetchAPI(
     })
     .then(callback)
     .catch(errorHandler);
+}
+
+function logout() {
+  localStorage.removeItem('token');
+}
+
+function login() {
+  location.href = 'login.html';
 }

@@ -7,3 +7,6 @@
 6)Social links still pending
 7)Nav for indivial profile
 8)Finishing touches on how pages load
+9)handle nav links logically I think you can use the app.js
+10)Handle the dates
+11)Reorder Posts that were recently added to the top

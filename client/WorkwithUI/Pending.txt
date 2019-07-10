@@ -1,4 +1,6 @@
 1) Work on links DONE
 2) Work on index don't show if logged in DONE
 3) Displaying the correct error and successes
-4) Updated profile
+3b) showing the success in a different page
+4) Updated profile not working when blank
+5) Format dates properly To and From

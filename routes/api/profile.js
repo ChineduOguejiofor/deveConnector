@@ -8,6 +8,7 @@ const cors = require('cors');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 
 router.use(cors());
 
@@ -153,19 +154,22 @@ router.get('/user/:user_id', async (req, res) => {
 });
 
 // @route DELETE api/profile/
-// @ desc Delete profile,user&post
+// @ desc Delete profile,user & post
 // @access Private
 
-router.delete('/', async (req, res) => {
+router.delete('/', auth, async (req, res) => {
   try {
+    //Remove user post
+    await Post.deleteMany({ user: req.user.id });
     //Remove profile
-    await Profile.findOneAndRemove({ user: req.params.user_id });
+    await Profile.findOneAndRemove({ user: req.user.id });
     //Remove user
-    await User.findOneAndRemove({ _id: req.params.user_id });
+    await User.findOneAndRemove({ _id: req.user.id });
 
     res.json({ msg: 'User Delete' });
   } catch (err) {
     console.error(err.message);
+    console.log('From here');
 
     res.status(500).send('Server Error');
   }

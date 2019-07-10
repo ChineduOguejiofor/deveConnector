@@ -31,7 +31,9 @@ callFetchAPI('/profile/me', 'GET', null, response => {
         <td>${response.data.experience[i].company}</td>
         <td class="hide-sm">${response.data.experience[i].title}</td>
         <td class="hide-sm">${response.data.experience[i].from}</td>
-        <td><button class="btn btn-danger">Delete</button></td>
+        <td><button onClick="deleteExp(event, '${
+          response.data.experience[i]._id
+        }')" class="btn btn-danger">Delete</button></td>
       `;
 
       expBody.appendChild(tr);
@@ -43,14 +45,40 @@ callFetchAPI('/profile/me', 'GET', null, response => {
         <td>${response.data.education[i].school}</td>
         <td class="hide-sm">${response.data.education[i].degree}</td>
         <td class="hide-sm">${response.data.education[i].from}</td>
-        <td><button class="btn btn-danger">Delete</button></td>
+        <td><button onClick="deleteEdu(event,'${
+          response.data.education[i]._id
+        }')" class="btn btn-danger">Delete</button></td>
       `;
 
       eduBody.appendChild(tr);
     }
   }
 });
+function deleteEdu(event, id) {
+  console.log('I was clicked');
+  event.target.parentElement.parentElement.remove();
+  callFetchAPI('/profile/education/' + id, 'DELETE', null, res => {
+    console.log(res.data);
+  });
+}
+function deleteExp(event, id) {
+  callFetchAPI('/profile/experience/' + id, 'DELETE', null, res => {
+    console.log(res.data);
+  });
+  console.log('I was clicked');
+  event.target.parentElement.parentElement.remove();
+}
 
-function logout(event) {
+function deleteMyAcc() {
+  if (window.confirm('Are you sure? This Cant be Undone')) {
+    callFetchAPI('/profile', 'DELETE', null, res => {
+      console.log(res.data);
+    });
+  }
+  logout();
+  location.href = 'login.html';
+}
+
+function logout() {
   localStorage.removeItem('token');
 }

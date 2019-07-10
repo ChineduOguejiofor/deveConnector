@@ -291,7 +291,10 @@
   color: #888;
 }
 
-.form input,
+.form input[type='text'],
+.form input[type='email'],
+.form input[type='password'],
+.form input[type='date'],
 .form select,
 .form textarea {
   display: block;
@@ -660,3 +663,4 @@ img {
     padding: 0.3rem 0.4rem;
   }
 }
+/*# sourceMappingURL=style.css.map */

@@ -34,7 +34,7 @@
           >
         </li>
         <li>
-          <a href="login.html " id="logout" onclick="logout(event)">
+          <a href="login.html " id="logout" onclick="logout()">
             <i class="fas fa-sign-out-alt"></i>
             <span class="hide-sm"> Logout</span></a
           >
@@ -50,7 +50,7 @@
         <span id="userName"></span>
       </p>
       <div id="spinner">
-        <img src="/dist/img/spin 3.gif" alt="" />
+        <img src="../img/spin 3.gif" alt="" />
       </div>
       <div id="profile" class="hide">
         <div class="dash-button">
@@ -91,8 +91,9 @@
         </table>
 
         <div class="my-2">
-          <button class="btn btn-danger">
-            <i class="fas fa-user-minus"></i> Delete My Account
+          <button class="btn btn-danger" onclick="deleteMyAcc()">
+            <i class="fas fa-user-minus"></i>
+            Delete My Account
           </button>
         </div>
       </div>

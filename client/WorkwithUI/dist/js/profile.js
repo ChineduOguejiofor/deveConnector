@@ -42,16 +42,44 @@ callFetchAPI('/profile/user/' + userId, 'GET', null, ({ data, statusCode }) => {
 
         <h1>${data.user.name}</h1>
         <p class="lead">${data.status} ${
-      data.company == null ? '' : data.company
+      data.company == null
+        ? ''
+        : '<span class="at-class"> at </span>' + data.company
     }</p>
         <p>${data.location == null ? '' : data.location}</p>
-        <div class="icons my-1">
-        <h2> Icons should be displayed here</h2>
-        
-        </div>
+        <div id='social-icons' class="icons my-1">
+            
+          </div>
         `;
 
     profileBody.appendChild(profileTop);
+    const socialicondiv = profileBody.querySelector('#social-icons');
+
+    if (data.social) {
+      for ([social, webLink] of Object.entries(data.social)) {
+        const anchor = document.createElement('a');
+        const iTag = document.createElement('i');
+        anchor.href = webLink;
+        anchor.target = '_blank';
+        iTag.className = `fab fa-${social} fa-2x`;
+        if (social == 'website') {
+          iTag.className = `fas fa-globe fa-2x`;
+        }
+        anchor.appendChild(iTag);
+
+        socialicondiv.appendChild(anchor);
+      }
+    }
+    if (data.website) {
+      const anchor = document.createElement('a');
+      const iTag = document.createElement('i');
+      anchor.href = data.website;
+      anchor.target = '_blank';
+      iTag.className = `fas fa-globe fa-2x`;
+      anchor.appendChild(iTag);
+
+      socialicondiv.appendChild(anchor);
+    }
 
     const bio = document.createElement('div');
     bio.classList.add('profile-about');

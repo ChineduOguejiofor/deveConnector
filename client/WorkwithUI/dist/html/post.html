@@ -43,26 +43,11 @@
       </ul>
     </nav>
     <section class="container">
+      <div class="alert alert-success p-1 hide" id="success"></div>
+
       <a href="posts.html" class="btn">Back To Posts</a>
-      <div class="post bg-white p-1 my-1" id="currentComment">
-        <div>
-          <a href="profile.html">
-            <img
-              class="round-img"
-              src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200"
-              alt=""
-            />
-            <h4>John Doe</h4>
-          </a>
-        </div>
-        <div>
-          <p class="my-1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-            possimus corporis sunt necessitatibus! Minus nesciunt soluta
-            suscipit nobis. Amet accusamus distinctio cupiditate blanditiis
-            dolor? Illo perferendis eveniet cum cupiditate aliquam?
-          </p>
-        </div>
+      <div class="post bg-white p-1 my-1" id="currentPost">
+        <!-- Added from code-->
       </div>
 
       <div class="post-form">
@@ -74,54 +59,17 @@
             name="text"
             cols="30"
             rows="5"
+            id="commentContent"
             placeholder="Comment on this post"
           ></textarea>
-          <button class="btn btn-dark my-1">Submit</button>
+          <button class="btn btn-dark my-1" onclick="addComment(event)">
+            Submit
+          </button>
         </form>
       </div>
 
-      <div class="posts">
-        <div class="post bg-white p-1 my-1">
-          <div>
-            <a href="profile.html">
-              <img
-                class="round-img"
-                src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200"
-                alt=""
-              />
-              <h4>John Doe</h4>
-            </a>
-          </div>
-          <div>
-            <p class="my-1">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-              possimus corporis sunt necessitatibus! Minus nesciunt soluta
-              suscipit nobis. Amet accusamus distinctio cupiditate blanditiis
-              dolor? Illo perferendis eveniet cum cupiditate aliquam?
-            </p>
-          </div>
-        </div>
-
-        <div class="post bg-white p-1 my-1">
-          <div>
-            <a href="profile.html">
-              <img
-                class="round-img"
-                src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200"
-                alt=""
-              />
-              <h4>John Doe</h4>
-            </a>
-          </div>
-          <div>
-            <p class="my-1">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-              possimus corporis sunt necessitatibus! Minus nesciunt soluta
-              suscipit nobis. Amet accusamus distinctio cupiditate blanditiis
-              dolor? Illo perferendis eveniet cum cupiditate aliquam?
-            </p>
-          </div>
-        </div>
+      <div class="posts" id="currentComment">
+        <!--Added from Code  -->
       </div>
     </section>
     <script src="../js/app.js"></script>

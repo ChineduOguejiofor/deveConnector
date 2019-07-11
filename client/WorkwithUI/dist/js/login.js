@@ -33,8 +33,17 @@ function loginUser(event) {
         }, 3000);
       } else if (statusCode === 200) {
         localStorage.setItem('token', data.token);
-        // localStorage.token = data.token;
-        location.href = 'dashboard.html';
+
+        callFetchAPI('/auth', 'GET', null, ({ statusCode, data }) => {
+          if (statusCode === 400) {
+            console.log(data);
+          } else if (statusCode === 200) {
+            localStorage.setItem('userId', data._id);
+            console.log('I am called');
+
+            // location.href = 'dashboard.html';
+          }
+        });
         console.log(data);
       }
     },

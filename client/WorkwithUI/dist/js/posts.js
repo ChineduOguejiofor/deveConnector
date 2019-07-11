@@ -11,6 +11,20 @@ callFetchAPI('/posts', 'GET', null, ({ statusCode, data }) => {
       const post = document.createElement('div');
 
       post.classList = 'post bg-white my-1 p-1';
+
+      let deleteButtonHTML = '';
+      if (true) {
+        deleteButtonHTML = `
+        
+        <button onClick="deletePost(event,'${
+          currentPost._id
+        }')" type='button' class='btn btn-danger'>
+        <i class='fas fa-times'></i>
+        </button>
+
+      `;
+      }
+
       post.innerHTML = `
       
       <div>
@@ -43,15 +57,11 @@ callFetchAPI('/posts', 'GET', null, ({ statusCode, data }) => {
         <button class="btn btn-primary" onClick="viewComment('${
           currentPost._id
         }')">Discussion 
-        <span class='comment-count'>5</span></button>
+        <span class='comment-count'>${
+          currentPost.comments.length > 0 ? currentPost.comments.length : ''
+        }</span></button>
   
-       
-        <button onClick="deletePost(event,'${
-          currentPost._id
-        }')" type='button' class='btn btn-danger'>
-        <i class='fas fa-times'></i>
-        </button>
-  
+        ${deleteButtonHTML}
   
       </div>
     
@@ -125,7 +135,7 @@ function createPost(event) {
     
       `;
 
-      postBody.appendChild(post);
+      postBody.prepend(post);
     }
   });
   // alert(text.value);
@@ -175,6 +185,6 @@ function unlikeComment(id) {
 }
 
 function viewComment(id) {
-  localStorage.setItem('currentComment', id);
+  localStorage.setItem('clickedPost', id);
   location.href = 'post.html';
 }

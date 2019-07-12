@@ -190,6 +190,7 @@ function unlikeComment(id) {
 }
 
 function viewComment(id) {
-  localStorage.setItem('clickedPost', id);
-  location.href = 'post.html';
+  // localStorage.setItem('clickedPost', id);
+  // location.href = 'post.html';
+  window.document.location = './post.html' + '?clickedPost=' + id;
 }

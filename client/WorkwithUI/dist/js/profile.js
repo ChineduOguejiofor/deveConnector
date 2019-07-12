@@ -1,34 +1,27 @@
+const queryStr = document.location.search.replace(/^.*?\?/, '');
+const usp = new URLSearchParams(queryStr);
+
+const userId = usp.get('clickedUser');
+
 if (localStorage.token) {
   callFetchAPI('/auth', 'GET', null, resp => {
     if (resp.statusCode === 200) {
-      if (resp.data._id === localStorage.clickedUser) {
+      if (resp.data._id === userId) {
         const editProfile = document.getElementById('editpro');
         editProfile.classList.remove('hide');
       }
     }
   });
 }
-const userId = localStorage.clickedUser;
 callFetchAPI('/profile/user/' + userId, 'GET', null, ({ data, statusCode }) => {
   if (statusCode === 400) {
     alert('There was an err');
     console.log(data);
   } else if (statusCode === 200) {
     console.log(data);
-    // console.log(data.social != null);
-
-    // console.log(data.social.twitter != null);
     const profileBody = document.getElementById('profileBody');
     const profileTop = document.createElement('div');
-    const twitter = document.createElement('div');
 
-    //Work on social
-    // if (data.social != null) {
-    //   if (data.social.twitter != null) {
-    //     // twitter.innerHTML = `<a href='#'><i class='fas fa-globe fa-2x'/></a>`;
-    //     twitter.innterHTML = '<h2> I am Twitter</h2>';
-    //   }
-    // }
     profileTop.classList.add('profile-top');
     profileTop.classList.add('bg-primary');
     profileTop.classList.add('p-2');
@@ -80,7 +73,8 @@ callFetchAPI('/profile/user/' + userId, 'GET', null, ({ data, statusCode }) => {
         socialicondiv.appendChild(anchor);
       }
     }
-
+    if (data.bio) {
+    }
     const bio = document.createElement('div');
     bio.classList.add('profile-about');
     bio.classList.add('bg-light');
@@ -91,12 +85,13 @@ callFetchAPI('/profile/user/' + userId, 'GET', null, ({ data, statusCode }) => {
             data.user.name.trim().split(' ')[0]
           }'s Bio</h2>
           <p>
-            ${data.bio}
+            ${data.bio ? data.bio : ''}
           </p>
           <div class="line"></div>
     `;
 
     profileBody.appendChild(bio);
+
     const skill = document.createElement('h2');
     skill.classList.add('text-primary');
     skill.textContent = 'Skill set';

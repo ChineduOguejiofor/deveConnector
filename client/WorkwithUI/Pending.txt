@@ -1,12 +1,12 @@
 1) Work on links DONE
 2) Work on index don't show if logged in DONE
-3) Displaying the correct error and successes
-3b) showing the success in a different page
-4) Updated profile not working when blank
+3) Displaying the correct error and successes DONE
+3b) showing the success in a different page DONE
+4) Updated profile not working when blank DONE
 5) Format dates properly To and From
 6)Social links still pending DONE
 7)Nav for indivial profile DONE
-8)Finishing touches on how pages load
-9)handle nav links logically I think you can use the app.js
+8)Finishing touches on how pages load: Work on registration
+9)handle nav links logically I think you can use the app.js DONE
 10)Handle the dates
-11)Reorder Posts that were recently added to the top
+11)Reorder Posts that were recently added to the top DONE

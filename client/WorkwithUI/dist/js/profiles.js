@@ -66,8 +66,5 @@ callFetchAPI('/profile', 'GET', null, ({ statusCode, data }) => {
 });
 
 function viewProfile(id) {
-  localStorage.setItem('clickedUser', id);
-  // console.log(id);
-
-  location.href = 'profile.html';
+  window.document.location = './profile.html' + '?clickedUser=' + id;
 }

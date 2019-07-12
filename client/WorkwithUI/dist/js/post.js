@@ -1,4 +1,9 @@
-const id = localStorage.getItem('clickedPost');
+// const id = localStorage.getItem('clickedPost');
+const queryStr = document.location.search.replace(/^.*?\?/, '');
+const usp = new URLSearchParams(queryStr);
+
+const id = usp.get('clickedPost');
+
 const commentBody = document.getElementById('currentComment');
 const successDiv = document.getElementById('success');
 const userId = localStorage.getItem('userId');

@@ -1,7 +1,7 @@
 //Decide if there is a profile
 callFetchAPI('/profile/me', 'GET', null, ({ statusCode, data }) => {
   if (statusCode === 400) {
-    alert('no Profile');
+    // alert('no Profile');
   } else if (statusCode === 200) {
     // const formData = new FormData('form');
     console.log(data.githubusername);

@@ -20,17 +20,9 @@ function loginUser(event) {
     ({ data, statusCode }) => {
       if (statusCode === 400) {
         console.log(data.errors[0].msg);
-        const errMsg = document.createElement('h3');
-        errMsg.classList.add('p-1');
-        errMsg.textContent = data.errors[0].msg;
-
-        errorDiv.appendChild(errMsg);
-        errorDiv.classList.remove('hide');
-
-        setTimeout(() => {
-          errorDiv.removeChild(errMsg);
-          errorDiv.classList.add('hide');
-        }, 3000);
+        const alertDiv = document.getElementById('displayAlert');
+        const errMsg = data.errors[0].msg;
+        displayAlert(alertDiv, errMsg);
       } else if (statusCode === 200) {
         localStorage.setItem('token', data.token);
 
@@ -41,24 +33,24 @@ function loginUser(event) {
             localStorage.setItem('userId', data._id);
             console.log('I am called');
 
-            // location.href = 'dashboard.html';
+            location.href = 'dashboard.html';
           }
         });
         console.log(data);
       }
     },
     err => {
-      const errMsg = document.createElement('h3');
-      errMsg.classList.add('p-1');
-      errMsg.textContent = err;
+      // errMsg.textContent = err;
 
-      errorDiv.appendChild(errMsg);
-      errorDiv.classList.remove('hide');
+      // errorDiv.classList.remove('hide');
 
-      setTimeout(() => {
-        errorDiv.removeChild(errMsg);
-        errorDiv.classList.add('hide');
-      }, 3000);
+      // setdisplayAlert(() => {
+      //   errorDiv.removeChild(errMsg);
+      //   errorDiv.classList.add('hide');
+      // }, 3000);
+      displayAlert();
+      console.log(errMsg);
+
       console.log(err);
     }
   );

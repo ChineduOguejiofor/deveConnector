@@ -1,6 +1,7 @@
 const id = localStorage.getItem('clickedPost');
 const commentBody = document.getElementById('currentComment');
 const successDiv = document.getElementById('success');
+const userId = localStorage.getItem('userId');
 
 callFetchAPI('/posts/' + id, 'GET', null, ({ statusCode, data }) => {
   if (statusCode === 400) {
@@ -30,6 +31,21 @@ callFetchAPI('/posts/' + id, 'GET', null, ({ statusCode, data }) => {
     sectionBody.appendChild(secondPart);
 
     data.comments.forEach(currentcomment => {
+      // create the delete Button
+      console.log(userId === currentcomment.user);
+      let deleteButtonHTML = '';
+
+      if (userId === currentcomment.user) {
+        deleteButtonHTML = `
+        <button onClick="deleteComment(event,'${
+          currentcomment._id
+        }')" type='button' class='btn btn-danger'>
+        <i class='fas fa-times'></i>
+        </button>
+      
+      `;
+      }
+
       const comment = document.createElement('div');
       comment.classList = 'post bg-white p-1 my-1';
 
@@ -50,13 +66,7 @@ callFetchAPI('/posts/' + id, 'GET', null, ({ statusCode, data }) => {
       ${currentcomment.text}
       </p>
       
-      <button onClick="deleteComment(event,'${
-        currentcomment._id
-      }')" type='button' class='btn btn-danger'>
-      <i class='fas fa-times'></i>
-      </button>
-    </div>
- 
+      ${deleteButtonHTML}
     
     `;
 
@@ -107,9 +117,11 @@ function addComment(event) {
         
         `;
 
-        commentBody.appendChild(comment);
-
+        commentBody.prepend(comment);
         document.getElementById('commentContent').value = '';
+
+        const alertDiv = document.getElementById('displayAlert');
+        displayAlert(alertDiv, 'Comment Added');
       }
     }
   );
@@ -128,17 +140,8 @@ function deleteComment(event, commentId) {
         console.log(data);
         event.target.parentElement.parentElement.remove();
 
-        const errMsg = document.createElement('h3');
-        errMsg.classList.add('p-1');
-        errMsg.textContent = 'Comment Removed';
-
-        successDiv.appendChild(errMsg);
-        successDiv.classList.remove('hide');
-
-        setTimeout(() => {
-          successDiv.removeChild(errMsg);
-          successDiv.classList.add('hide');
-        }, 3000);
+        const alertDiv = document.getElementById('displayAlert');
+        displayAlert(alertDiv, 'Comment Removed');
       }
     },
     err => {
@@ -149,12 +152,11 @@ function deleteComment(event, commentId) {
       successDiv.appendChild(errMsg);
       successDiv.classList.remove('hide');
 
-      setTimeout(() => {
+      setdisplayAlert(() => {
         successDiv.removeChild(errMsg);
         successDiv.classList.add('hide');
       }, 3000);
       console.log(err);
     }
   );
-  console.log('delete comment with id ' + commentId);
 }

@@ -1,4 +1,5 @@
 const postBody = document.getElementById('postBody');
+const userId = localStorage.getItem('userId');
 
 callFetchAPI('/posts', 'GET', null, ({ statusCode, data }) => {
   if (statusCode === 400) {
@@ -13,7 +14,7 @@ callFetchAPI('/posts', 'GET', null, ({ statusCode, data }) => {
       post.classList = 'post bg-white my-1 p-1';
 
       let deleteButtonHTML = '';
-      if (true) {
+      if (userId === currentPost.user) {
         deleteButtonHTML = `
         
         <button onClick="deletePost(event,'${
@@ -121,7 +122,7 @@ function createPost(event) {
         <button class="btn btn-primary" onClick="viewComment('${
           data._id
         }')">Discussion 
-        <span class='comment-count'>5</span></button>
+       </button>
   
        
         <button onClick="deletePost(event,'${
@@ -136,6 +137,8 @@ function createPost(event) {
       `;
 
       postBody.prepend(post);
+      const alertDiv = document.getElementById('displayAlert');
+      displayAlert(alertDiv, 'Post Added');
     }
   });
   // alert(text.value);
@@ -147,6 +150,8 @@ function deletePost(event, id) {
       console.log(res.data);
     } else if (res.statusCode === 200) {
       event.target.parentElement.parentElement.remove();
+      const alertDiv = document.getElementById('displayAlert');
+      displayAlert(alertDiv, 'Post Removed');
       console.log(res.data);
     }
     console.log(res);

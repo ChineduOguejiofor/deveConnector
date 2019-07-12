@@ -142,7 +142,7 @@
 
 .alert {
   padding: 0.8rem;
-  margin: 1rem;
+  margin-bottom: 1rem;
   opacity: 0.9;
   background: #f4f4f4;
   color: #333;

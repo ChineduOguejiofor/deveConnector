@@ -36,8 +36,22 @@ function callFetchAPI(
 
 function logout() {
   localStorage.removeItem('token');
+  localStorage.removeItem('userId');
+  location.href = 'login.html';
 }
 
 function login() {
   location.href = 'login.html';
+}
+
+function displayAlert(alertDiv, msg) {
+  alertDiv.classList.remove('hide');
+  const message = document.createElement('h3');
+  message.textContent = msg;
+
+  alertDiv.appendChild(message);
+  setTimeout(() => {
+    alertDiv.removeChild(message);
+    alertDiv.classList.add('hide');
+  }, 3000);
 }

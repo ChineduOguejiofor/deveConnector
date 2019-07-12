@@ -76,9 +76,4 @@ function deleteMyAcc() {
     });
   }
   logout();
-  location.href = 'login.html';
-}
-
-function logout() {
-  localStorage.removeItem('token');
 }

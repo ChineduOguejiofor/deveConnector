@@ -55,6 +55,17 @@ callFetchAPI('/profile/user/' + userId, 'GET', null, ({ data, statusCode }) => {
     profileBody.appendChild(profileTop);
     const socialicondiv = profileBody.querySelector('#social-icons');
 
+    if (data.website) {
+      const anchor = document.createElement('a');
+      const iTag = document.createElement('i');
+      anchor.href = data.website;
+      anchor.target = '_blank';
+      iTag.className = `fas fa-globe fa-2x`;
+      anchor.appendChild(iTag);
+
+      socialicondiv.appendChild(anchor);
+    }
+
     if (data.social) {
       for ([social, webLink] of Object.entries(data.social)) {
         const anchor = document.createElement('a');
@@ -66,19 +77,8 @@ callFetchAPI('/profile/user/' + userId, 'GET', null, ({ data, statusCode }) => {
           iTag.className = `fas fa-globe fa-2x`;
         }
         anchor.appendChild(iTag);
-
         socialicondiv.appendChild(anchor);
       }
-    }
-    if (data.website) {
-      const anchor = document.createElement('a');
-      const iTag = document.createElement('i');
-      anchor.href = data.website;
-      anchor.target = '_blank';
-      iTag.className = `fas fa-globe fa-2x`;
-      anchor.appendChild(iTag);
-
-      socialicondiv.appendChild(anchor);
     }
 
     const bio = document.createElement('div');

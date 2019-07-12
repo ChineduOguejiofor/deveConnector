@@ -4,8 +4,8 @@
 3b) showing the success in a different page
 4) Updated profile not working when blank
 5) Format dates properly To and From
-6)Social links still pending
-7)Nav for indivial profile
+6)Social links still pending DONE
+7)Nav for indivial profile DONE
 8)Finishing touches on how pages load
 9)handle nav links logically I think you can use the app.js
 10)Handle the dates

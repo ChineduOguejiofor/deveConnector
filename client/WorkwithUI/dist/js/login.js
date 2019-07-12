@@ -40,14 +40,6 @@ function loginUser(event) {
       }
     },
     err => {
-      // errMsg.textContent = err;
-
-      // errorDiv.classList.remove('hide');
-
-      // setdisplayAlert(() => {
-      //   errorDiv.removeChild(errMsg);
-      //   errorDiv.classList.add('hide');
-      // }, 3000);
       displayAlert();
       console.log(errMsg);
 

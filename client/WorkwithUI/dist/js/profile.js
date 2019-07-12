@@ -114,7 +114,9 @@ callFetchAPI('/profile/user/' + userId, 'GET', null, ({ data, statusCode }) => {
         const singleExp = document.createElement('div');
         singleExp.innerHTML = `
       <h3>${data.experience[i].company}</h3>
-      <p>${data.experience[i].from} - ${data.experience[i].to}</p>
+      <p>${formatDate(data.experience[i].from)} - ${
+          data.experience[i].to ? formatDate(data.experience[i].to) : 'Now'
+        }</p>
       <p><strong>Position: </strong> ${data.experience[i].title}</p>
       <p>
         <strong>Description: </strong> ${data.experience[i].description}
@@ -133,7 +135,9 @@ callFetchAPI('/profile/user/' + userId, 'GET', null, ({ data, statusCode }) => {
         const singleEdu = document.createElement('div');
         singleEdu.innerHTML = `
     <h3>${data.education[i].school}</h3>
-    <p>${data.education[i].from} - ${data.education[i].to}</p>
+    <p>${formatDate(data.education[i].from)} - ${
+          data.education[i].to ? formatDate(data.education[i].to) : 'Now'
+        }</p>
     <p><strong>Degree: </strong> ${data.education[i].degree}</p>
     <p><strong>Field Of Study: </strong> ${data.education[i].fieldofstudy}</p>
     <p>
@@ -164,10 +168,8 @@ callFetchAPI('/profile/user/' + userId, 'GET', null, ({ data, statusCode }) => {
           } else if (statusCode === 200) {
             data.forEach(repo => {
               const gitRepo = document.createElement('div');
-              gitRepo.classList.add('repo');
-              gitRepo.classList.add('bg-white');
-              gitRepo.classList.add('my-1');
-              gitRepo.classList.add('p-1');
+              gitRepo.classList = 'repo bg-white my-1 p-1';
+
               gitRepo.innerHTML = `
         <div>
           <h4><a href="${
@@ -175,7 +177,7 @@ callFetchAPI('/profile/user/' + userId, 'GET', null, ({ data, statusCode }) => {
           }" target='_blank' rel='noopener noreferrer'>${repo.name}
           </a></h4>
           <p>
-            ${repo.description}
+            ${repo.description ? repo.description : ''}
           </p>
         </div>
         <div>

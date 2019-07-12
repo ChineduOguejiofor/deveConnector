@@ -28,9 +28,9 @@ callFetchAPI('/posts/' + id, 'GET', null, ({ statusCode, data }) => {
       <h4>${data.name}</h4>
       </a>`;
     secondPart.innerHTML = `
-      <p class="my-1">
-      ${data.text}
-      </p>`;
+    <p class="my-1">${data.text}</p> <p class="my-1">Posted on ${formatDate(
+      data.date
+    )}</p> `;
 
     sectionBody.appendChild(firstPart);
     sectionBody.appendChild(secondPart);
@@ -70,7 +70,9 @@ callFetchAPI('/posts/' + id, 'GET', null, ({ statusCode, data }) => {
       <p class="my-1">
       ${currentcomment.text}
       </p>
-      
+      <p class="my-1">Posted on
+      ${formatDate(currentcomment.date)}
+      </p>
       ${deleteButtonHTML}
     
     `;
@@ -109,9 +111,8 @@ function addComment(event) {
           </a>
         </div>
         <div>
-          <p class="my-1">
-          ${data[0].text}
-          </p>
+          <p class="my-1"> ${data[0].text}</p>
+          <p class="my-1">Posted on ${formatDate(data[0].date)}</p>
           <button onClick="deleteComment(event,'${
             data[0]._id
           }')" type='button' class='btn btn-danger'>

@@ -55,3 +55,27 @@ function displayAlert(alertDiv, msg) {
     alertDiv.classList.add('hide');
   }, 3000);
 }
+
+function formatDate(thedate) {
+  const date = new Date(thedate);
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
+
+  const day = date.getDate();
+  const monthIndex = date.getMonth();
+  const year = date.getFullYear();
+
+  return day + ' ' + monthNames[monthIndex] + ' ' + year;
+}

@@ -8,6 +8,10 @@ callFetchAPI('/posts', 'GET', null, ({ statusCode, data }) => {
   } else if (statusCode === 200) {
     console.log(data);
 
+    console.log(data[0].date);
+    console.log(formatDate(data[0].date));
+
+    // debugger;
     data.forEach(currentPost => {
       const post = document.createElement('div');
 
@@ -43,7 +47,7 @@ callFetchAPI('/posts', 'GET', null, ({ statusCode, data }) => {
         <p class="my-1">
         ${currentPost.text}
         </p>
-        <p>Posted on ${currentPost.date}</p>
+        <p>Posted on ${formatDate(currentPost.date)}</p>
         <button onClick="likeComment('${
           currentPost._id
         }')" class="btn" id="likebtn">
@@ -109,7 +113,7 @@ function createPost(event) {
         <p class="my-1">
         ${data.text}
         </p>
-        <p>Posted on ${data.date}</p>
+        <p>Posted on ${formatDate(data.date)}</p>
         <button onClick="likeComment('${data._id}')" class="btn" id="likebtn">
           <i class="fas fa-thumbs-up"></i> <span id="likeCount">${
             data.likes.length > 0 ? data.likes.length : ''
@@ -152,6 +156,7 @@ function deletePost(event, id) {
       event.target.parentElement.parentElement.remove();
       const alertDiv = document.getElementById('displayAlert');
       displayAlert(alertDiv, 'Post Removed');
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
       console.log(res.data);
     }
     console.log(res);

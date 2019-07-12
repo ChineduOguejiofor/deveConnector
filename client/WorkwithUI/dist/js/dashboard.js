@@ -7,46 +7,50 @@ callFetchAPI('/auth', 'GET', null, ({ statusCode, data }) => {
   }
 });
 
-callFetchAPI('/profile/me', 'GET', null, response => {
+callFetchAPI('/profile/me', 'GET', null, ({ statusCode, data }) => {
   const spinner = document.getElementById('spinner');
   spinner.classList.add('hide');
-  if (response.statusCode === 400) {
-    console.log(response.data);
+  if (statusCode === 400) {
+    console.log(data);
     const sBody = document.getElementById('noProfile');
 
     sBody.classList.remove('hide');
-  } else if (response.statusCode === 200) {
+  } else if (statusCode === 200) {
     const sBody = document.getElementById('profile');
 
     sBody.classList.remove('hide');
 
-    console.log(response.data);
+    console.log(data);
 
     const eduBody = document.getElementById('eduBody');
     const expBody = document.getElementById('expBody');
 
-    for (let i = 0; i < response.data.experience.length; i++) {
+    for (let i = 0; i < data.experience.length; i++) {
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${response.data.experience[i].company}</td>
-        <td class="hide-sm">${response.data.experience[i].title}</td>
-        <td class="hide-sm">${response.data.experience[i].from}</td>
+        <td>${data.experience[i].company}</td>
+        <td class="hide-sm">${data.experience[i].title}</td>
+        <td class="hide-sm">${formatDate(data.experience[i].from)} - ${
+        data.experience[i].to ? formatDate(data.experience[i].to) : 'Now'
+      }</td>
         <td><button onClick="deleteExp(event, '${
-          response.data.experience[i]._id
+          data.experience[i]._id
         }')" class="btn btn-danger">Delete</button></td>
       `;
 
       expBody.appendChild(tr);
     }
 
-    for (let i = 0; i < response.data.education.length; i++) {
+    for (let i = 0; i < data.education.length; i++) {
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${response.data.education[i].school}</td>
-        <td class="hide-sm">${response.data.education[i].degree}</td>
-        <td class="hide-sm">${response.data.education[i].from}</td>
+        <td>${data.education[i].school}</td>
+        <td class="hide-sm">${data.education[i].degree}</td>
+        <td class="hide-sm">${formatDate(data.education[i].from)} - ${
+        data.education[i].to ? formatDate(data.education[i].to) : 'Now'
+      }</td>
         <td><button onClick="deleteEdu(event,'${
-          response.data.education[i]._id
+          data.education[i]._id
         }')" class="btn btn-danger">Delete</button></td>
       `;
 

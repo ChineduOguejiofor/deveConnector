@@ -8,9 +8,12 @@ function registerUser(event) {
   const email = formData.get('email');
   const password = formData.get('password');
   const password2 = formData.get('password2');
+  const alertDiv = document.getElementById('displayAlert');
 
   if (password !== password2) {
-    alert('wrong password');
+    // const errMsg = data.errors[0].msg;
+    displayAlert(alertDiv, 'Passwords do not match');
+    // alert('wrong password');
   } else {
     const newUser = {
       name,
@@ -21,6 +24,8 @@ function registerUser(event) {
     callFetchAPI('/users', 'POST', newUser, ({ data, statusCode }) => {
       if (statusCode === 400) {
         console.log(data);
+        const errMsg = data.errors[0].msg;
+        displayAlert(alertDiv, errMsg);
       } else if (statusCode === 200) {
         localStorage.token = data.token;
         location.href = 'dashboard.html';

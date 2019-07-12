@@ -4,7 +4,7 @@ callFetchAPI('/profile/me', 'GET', null, ({ statusCode, data }) => {
     // alert('no Profile');
   } else if (statusCode === 200) {
     // const formData = new FormData('form');
-    console.log(data.githubusername);
+    // console.log(data.githubusername);
 
     document.getElementById('status').value = data.status;
     document.getElementById('skills').value = data.skills;
@@ -71,7 +71,10 @@ function submitForm(event) {
 
   callFetchAPI('/profile', 'POST', profileData, ({ data, statusCode }) => {
     if (statusCode === 400) {
-      // alert('there was an error');
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+      const alertDiv = document.getElementById('displayAlert');
+      const errMsg = data.errors[0].msg;
+      displayAlert(alertDiv, errMsg);
       console.log(data);
     } else if (statusCode === 200) {
       // alert('Profile Created');

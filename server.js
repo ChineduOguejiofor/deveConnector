@@ -9,6 +9,8 @@ connectDB();
 //This is equivalent to bodyparser
 app.use(express.json({ extended: false }));
 
+app.use('/public', express.static('client/WorkwithUI/dist'));
+
 // app.get('/', (req, res) => res.send('API Running'));
 
 //Define Routes

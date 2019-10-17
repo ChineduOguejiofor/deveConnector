@@ -169,8 +169,6 @@ router.delete('/', auth, async (req, res) => {
     res.json({ msg: 'User Delete' });
   } catch (err) {
     console.error(err.message);
-    console.log('From here');
-
     res.status(500).send('Server Error');
   }
 });

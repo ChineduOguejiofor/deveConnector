@@ -15,6 +15,8 @@ function callFetchAPI(
   myHeaders.append('x-auth-token', tokenValue);
   myHeaders.append('Content-Type', 'application/json');
 
+  // fetch(url)
+
   fetch(BASE_URL + route, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,

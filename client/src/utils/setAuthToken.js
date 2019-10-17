@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:3040/api';
+axios.defaults.baseURL = '/api';
 
 const setAuthToken = token => {
   if (token) {
